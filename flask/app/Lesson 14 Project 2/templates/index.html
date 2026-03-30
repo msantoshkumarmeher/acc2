@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 14 Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="wrapper">
+        <h1>Weather Checker</h1>
+        <p class="subtitle">Get current weather by city name</p>
+
+        <form method="POST" class="weather-form">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" placeholder="e.g. Delhi" value="{{ city }}" required>
+
+            <label for="units">Units</label>
+            <select id="units" name="units">
+                <option value="metric" {% if units == 'metric' %}selected{% endif %}>Metric (C)</option>
+                <option value="imperial" {% if units == 'imperial' %}selected{% endif %}>Imperial (F)</option>
+                <option value="standard" {% if units == 'standard' %}selected{% endif %}>Standard (K)</option>
+            </select>
+
+            <button type="submit">Show Weather</button>
+        </form>
+
+        {% if error %}
+            <div class="alert">{{ error }}</div>
+        {% endif %}
+
+        {% if weather %}
+            <section class="card">
+                <h2>{{ weather.city }} ({{ weather.timezone }})</h2>
+                <p><strong>Condition:</strong> {{ weather.description }}</p>
+                <p><strong>Temperature:</strong> {{ weather.temp }}</p>
+                <p><strong>Feels like:</strong> {{ weather.feels_like }}</p>
+                <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+                <p><strong>Wind speed:</strong> {{ weather.wind_speed }}</p>
+                <p><strong>Today range:</strong> {{ weather.today_min }} to {{ weather.today_max }}</p>
+            </section>
+        {% endif %}
+    </main>
+</body>
+</html>

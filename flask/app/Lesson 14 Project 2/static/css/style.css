@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2a37;
+}
+
+.wrapper {
+    max-width: 520px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid #d9e1ec;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+h1 {
+    margin: 0 0 6px;
+    font-size: 1.6rem;
+}
+
+.subtitle {
+    margin: 0 0 18px;
+    color: #5b6778;
+    font-size: 0.95rem;
+}
+
+.weather-form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #c9d4e2;
+    font-size: 0.95rem;
+}
+
+button {
+    border: none;
+    background: #2f6feb;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+button:hover {
+    background: #255ac0;
+}
+
+.alert {
+    margin-top: 14px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #ffe8e8;
+    color: #a12626;
+    border: 1px solid #f2bbbb;
+}
+
+.card {
+    margin-top: 16px;
+    border: 1px solid #d9e1ec;
+    border-radius: 8px;
+    padding: 14px;
+    background: #fbfdff;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.card p {
+    margin: 6px 0;
+}

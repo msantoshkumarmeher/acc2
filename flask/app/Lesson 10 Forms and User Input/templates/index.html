@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sentiment Analyzer | Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .hero {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">🤖 AI Sentiment Analyzer</a>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/analyze">Analyze Text</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>
+                Welcome to <span class="highlight">AI Sentiment Analyzer</span>
+            </h1>
+            <p>
+                Discover the emotions behind any text with our powerful AI-powered sentiment analysis tool.
+                Whether you're analyzing customer feedback, social media comments, or personal messages,
+                we help you understand the true sentiment instantly!
+            </p>
+            <a href="/analyze" class="cta-button">🚀 Start Analyzing Now</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Real-time Analysis</h3>
+                <p>Get instant sentiment analysis results with our lightning-fast processing engine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Detailed Statistics</h3>
+                <p>View word count, character count, and sentiment analysis all in one place.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Accurate Detection</h3>
+                <p>Our AI detects positive, negative, and neutral sentiments with high accuracy.</p>
+            </div>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Enter Your Text</h4>
+                    <p>Type or paste any text you want to analyze in the text box.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Click Analyze</h4>
+                    <p>Press the analyze button and let our AI process your text.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Get Results</h4>
+                    <p>View detailed analysis including sentiment, word count, and more!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>🤖 AI Sentiment Analyzer | Built with Flask and Python</p>
+        <p>© 2026 Your Name | Learn AI Application Development</p>
+    </footer>
+</body>
+</html>

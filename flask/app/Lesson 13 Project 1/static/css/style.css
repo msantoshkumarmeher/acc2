@@ -1,0 +1,151 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    padding: 40px 16px;
+}
+
+/* ── Container ── */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 32px 36px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+}
+
+/* ── Headings ── */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #222;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 8px;
+}
+
+/* ── Forms ── */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+input[type="text"],
+input[type="password"],
+input[name="username"],
+input[name="password"],
+input[name="name"],
+input[name="age"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+/* ── Buttons ── */
+button {
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #357abd;
+}
+
+/* ── Links ── */
+a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ── Table ── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background: #4a90e2;
+    color: #fff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+tr:hover {
+    background: #eef3fb;
+}
+
+/* ── Delete link in table ── */
+td a:last-child {
+    color: #e53935;
+}
+
+td a:last-child:hover {
+    color: #b71c1c;
+}
+
+/* ── Dashboard / nav links ── */
+.nav-link {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 8px 16px;
+    background: #4a90e2;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.nav-link:hover {
+    background: #357abd;
+    text-decoration: none;
+}
+
+.logout-link {
+    margin-top: 0;
+}

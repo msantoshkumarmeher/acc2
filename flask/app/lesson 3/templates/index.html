@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" 
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<h1>Flask Static Files Demo</h1>
+
+<img src="{{ url_for('static', filename='images/logo.jpg') }}" width="500px">
+
+<button onclick="showMessage()">Click</button>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

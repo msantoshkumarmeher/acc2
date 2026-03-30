@@ -1,0 +1,15 @@
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.env.*
+!.env.example
+Thumbs.db
+*.log
+flask/API CALL/secret.py

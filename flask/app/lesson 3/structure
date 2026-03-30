@@ -1,0 +1,16 @@
+project/
+│
+├── app.py
+│
+├── templates/
+│     └── index.html
+│
+└── static/
+      ├── css/
+      │     └── style.css
+      │
+      ├── js/
+      │     └── script.js
+      │
+      └── images/
+            └── logo.png
