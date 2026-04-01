@@ -2,6 +2,12 @@ import os
 
 import requests
 
+# ============================================================
+# API CALL - City to Coordinates to Weather
+# File: city_to_coordinates.py
+# Purpose: CLI script to fetch weather by city name using OpenWeather APIs
+# ============================================================
+
 API_KEY = os.getenv("OPENWEATHER_API_KEY", "")
 
 def get_weather(city):
@@ -10,7 +16,7 @@ def get_weather(city):
             print("Missing OPENWEATHER_API_KEY environment variable.")
             return
 
-        # Step 1: Get coordinates
+        # Step 1: Convert city name to latitude/longitude
         geo_url = f"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={API_KEY}"
         geo_data = requests.get(geo_url).json()
 
@@ -21,12 +27,12 @@ def get_weather(city):
         lat = geo_data[0]["lat"]
         lon = geo_data[0]["lon"]
 
-        # Step 2: Get weather
+        # Step 2: Use coordinates to fetch weather details
         weather_url = f"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&units=metric&appid={API_KEY}"
         weather_data = requests.get(weather_url).json()
 
 
-        # Step 3: Display result
+        # Step 3: Print formatted weather report in terminal
         print("\n--- Weather Report ---")
         print(f"City        : {city}")
         print(f"Condition   : {weather_data['weather'][0]['description']}")
@@ -39,6 +45,6 @@ def get_weather(city):
         print("Error:", e)
 
 
-# Run
+# Run script interactively
 city = input("Enter city name: ")
 get_weather(city)

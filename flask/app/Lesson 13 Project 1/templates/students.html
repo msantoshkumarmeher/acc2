@@ -3,6 +3,7 @@
 
 <h2>Students</h2>
 
+<!-- Open add-student form -->
 <a class="nav-link" href="/add">Add Student</a>
 
 <table border="1">
@@ -10,10 +11,12 @@
 
 {% for s in students %}
 <tr>
+<!-- Access row fields from DB query -->
 <td>{{ s.id }}</td>
 <td>{{ s.name }}</td>
 <td>{{ s.age }}</td>
 <td>
+<!-- Edit and delete action links -->
 <a href="/edit/{{ s.id }}">Edit</a>
 <a href="/delete/{{ s.id }}">Delete</a>
 </td>

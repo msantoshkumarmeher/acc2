@@ -8,10 +8,13 @@
 
 <h2>Student Form</h2>
 
+<!-- method="POST" sends data in request body -->
 <form action="/submit" method="POST">
 
+<!-- input name must match request.form["username"] in app.py -->
 Name: <input type="text" name="username"><br><br>
 
+<!-- input name must match request.form["age"] in app.py -->
 Age: <input type="number" name="age"><br><br>
 
 <input type="submit" value="Submit">

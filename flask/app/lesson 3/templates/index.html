@@ -2,6 +2,7 @@
 <html>
 <head>
 
+<!-- Link CSS file from static/css folder -->
 <link rel="stylesheet" 
 href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -11,10 +12,13 @@ href="{{ url_for('static', filename='css/style.css') }}">
 
 <h1>Flask Static Files Demo</h1>
 
+<!-- Load image from static/images folder -->
 <img src="{{ url_for('static', filename='images/logo.jpg') }}" width="500px">
 
+<!-- Calls JavaScript function from static/js/script.js -->
 <button onclick="showMessage()">Click</button>
 
+<!-- Link JavaScript file from static/js folder -->
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>

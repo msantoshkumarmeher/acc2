@@ -1,3 +1,5 @@
+# This is a temporary editor-generated file and appears incomplete/corrupted.
+# It is not required for the lesson app to work.
 , render_template
 
 app = Flask(__name__)

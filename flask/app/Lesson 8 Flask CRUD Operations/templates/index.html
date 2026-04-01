@@ -10,10 +10,12 @@
     <div class="container">
         <h2>Student List</h2>
 
+        <!-- Link to add-student form -->
         <a href="/add" class="btn">Add Student</a>
 
         <table>
         <tr>
+        <!-- Table headers -->
         <th>ID</th>
         <th>Name</th>
         <th>Age</th>
@@ -22,10 +24,12 @@
 
         {% for s in students %}
         <tr>
+        <!-- Access SQLite row values by column name -->
         <td>{{ s['id'] }}</td>
         <td>{{ s['name'] }}</td>
         <td>{{ s['age'] }}</td>
         <td>
+        <!-- Edit and delete actions for each student -->
         <a href="/edit/{{ s['id'] }}" class="btn">Edit</a>
         <a href="/delete/{{ s['id'] }}" class="btn btn-danger">Delete</a>
         </td>

@@ -5,6 +5,12 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 from urllib.error import HTTPError, URLError
 
+# ============================================================
+# Lesson 14 - Weather App Project
+# File: app.py
+# Purpose: Fetch city weather from OpenWeather API and show in UI
+# ============================================================
+
 app = Flask(__name__)
 
 # Read the OpenWeather key from the environment for safe publishing.
@@ -15,6 +21,7 @@ CURRENT_URL = "https://api.openweathermap.org/data/2.5/weather"
 
 
 def fetch_coordinates(city):
+    # Step 1: Convert city name to latitude/longitude using geocoding API
     params = {
         "q": city,
         "limit": 1,
@@ -34,6 +41,7 @@ def fetch_coordinates(city):
 
 
 def fetch_weather(lat, lon, units="metric"):
+    # Step 2A: Try One Call API for richer weather data
     params = {
         "lat": lat,
         "lon": lon,
@@ -49,6 +57,7 @@ def fetch_weather(lat, lon, units="metric"):
 
 
 def fetch_current_weather(city, units="metric"):
+    # Step 2B: Fallback API (current weather only)
     params = {
         "q": city,
         "units": units,
@@ -63,17 +72,20 @@ def fetch_current_weather(city, units="metric"):
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    # Variables passed to template (default state)
     weather = None
     error = None
     city = ""
     units = "metric"
 
     if request.method == "POST":
+        # Read form values
         city = request.form.get("city", "").strip()
         units = request.form.get("units", "metric").strip() or "metric"
 
         try:
             if not API_KEY:
+                # API key must be set in environment variable
                 raise ValueError("Missing OPENWEATHER_API_KEY environment variable.")
 
             if not city:
@@ -85,6 +97,7 @@ def home():
             lat, lon, resolved_city = fetch_coordinates(city)
 
             try:
+                # Primary call (One Call API)
                 data = fetch_weather(lat, lon, units)
                 current = data.get("current", {})
                 daily = data.get("daily", [])
@@ -108,6 +121,7 @@ def home():
                 if onecall_err.code != 401:
                     raise
 
+                # Fallback to current weather endpoint
                 data = fetch_current_weather(resolved_city, units)
                 main = data.get("main", {})
                 wind = data.get("wind", {})

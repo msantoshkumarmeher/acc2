@@ -231,6 +231,7 @@
             <!-- Text Content Section -->
             <div class="result-section">
                 <h3>📝 Your Text:</h3>
+                <!-- Original text submitted from form -->
                 <div class="user-text">
                     "{{ text }}"
                 </div>
@@ -239,6 +240,7 @@
             <!-- Statistics Section -->
             <div class="result-section">
                 <h3>📈 Text Statistics:</h3>
+                <!-- Values calculated in Flask route -->
                 <div class="stats-grid">
                     <div class="stat-box">
                         <div class="stat-value">{{ word_count }}</div>
@@ -254,6 +256,7 @@
             <!-- Sentiment Analysis Section -->
             <div class="result-section">
                 <h3>🎯 Sentiment Analysis:</h3>
+                <!-- Message style changes based on sentiment type -->
                 <div class="sentiment-box">
                     {% if sentiment == "Positive 😊" %}
                         <div class="sentiment-positive">{{ sentiment }}</div>

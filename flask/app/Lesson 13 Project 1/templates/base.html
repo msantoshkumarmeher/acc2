@@ -9,10 +9,12 @@
 
 <div class="container">
 {% if session.get('user') %}
+<!-- Top bar appears only for logged-in users -->
 <div class="topbar">
 <a class="nav-link logout-link" href="/logout">Logout</a>
 </div>
 {% endif %}
+<!-- Child templates inject page-specific content here -->
 {% block content %}{% endblock %}
 </div>
 

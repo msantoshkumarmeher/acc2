@@ -31,11 +31,18 @@
 import os
 import sqlite3
 
+# ============================================================
+# Lesson 7 - Insert Sample Data into SQLite
+# File: create_db.py
+# Purpose: Add initial student records for testing
+# ============================================================
+
 # Same database path logic (important!)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "database.db")
 
 try:
+    # Open database connection and cursor
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
@@ -54,6 +61,7 @@ try:
         students_data
     )
 
+    # Save changes
     conn.commit()
     print("5 records inserted successfully")
 
@@ -61,5 +69,6 @@ except Exception as e:
     print("Error inserting data:", e)
 
 finally:
+    # Close connection even if error happens
     if 'conn' in locals():
         conn.close()

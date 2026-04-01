@@ -1,22 +1,30 @@
-from flask import Flask, render_template, request  # Added 'request'
+from flask import Flask, render_template, request
+
+# ============================================================
+# Lesson 10 - Forms and User Input
+# File: app.py
+# Purpose: Accept user text and return basic sentiment-style analysis
+# ============================================================
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
+    # Landing page
     return render_template('index.html')
 
-@app.route('/analyze', methods=['GET', 'POST'])  # Allow both GET and POST
+# GET shows form, POST processes submitted text
+@app.route('/analyze', methods=['GET', 'POST'])
 def analyze():
     if request.method == 'POST':
-        # This runs when form is submitted
-        user_text = request.form['user_input']  # Get data from form
+        # Read text input from form field named user_input
+        user_text = request.form['user_input']
         
         # Simple "AI" analysis (we'll upgrade this later)
         word_count = len(user_text.split())
         char_count = len(user_text)
         
-        # Check for keywords (simple sentiment)
+        # Keyword-based sentiment check (for learning/demo only)
         if 'sad' in user_text.lower() or 'good' in user_text.lower():
             sentiment = "Negative 😊"
         elif 'happy' in user_text.lower() or 'bad' in user_text.lower():
@@ -31,7 +39,7 @@ def analyze():
                              char_count=char_count,
                              sentiment=sentiment)
     
-    # If GET request, just show the form
+    # For GET request, show analysis form page
     return render_template('analyze.html')
 
 if __name__ == '__main__':

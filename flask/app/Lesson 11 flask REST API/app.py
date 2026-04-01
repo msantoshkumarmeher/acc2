@@ -2,6 +2,12 @@ from flask import Flask, request, jsonify
 import sqlite3
 import os
 
+# ============================================================
+# Lesson 11 - Flask REST API
+# File: app.py
+# Purpose: Build CRUD API endpoints for student data
+# ============================================================
+
 app = Flask(__name__)
 
 # -----------------------------
@@ -12,6 +18,7 @@ DB_PATH = os.path.join(BASE_DIR, "database.db")
 
 
 def get_db():
+    # Open DB connection and return rows as dictionary-like objects
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
@@ -21,6 +28,7 @@ def get_db():
 # Initialize Database
 # -----------------------------
 def init_db():
+    # Create students table once when app starts
     conn = get_db()
     conn.execute("""
     CREATE TABLE IF NOT EXISTS students (
@@ -58,12 +66,14 @@ def home():
 # -----------------------------
 @app.route("/api/students", methods=["GET"])
 def get_students():
+    # Fetch all students
     conn = get_db()
     students = conn.execute("SELECT * FROM students").fetchall()
     conn.close()
 
     result = []
     for s in students:
+        # Convert each DB row to JSON-ready dictionary
         result.append({
             "id": s["id"],
             "name": s["name"],
@@ -82,6 +92,7 @@ def get_students():
 # -----------------------------
 @app.route("/api/student/<int:id>", methods=["GET"])
 def get_student(id):
+    # Fetch one student by id
     conn = get_db()
     s = conn.execute(
         "SELECT * FROM students WHERE id=?",
@@ -110,6 +121,7 @@ def get_student(id):
 # -----------------------------
 @app.route("/api/add", methods=["POST"])
 def add_student():
+    # Parse JSON request body
     data = request.get_json()
 
     if not data or "name" not in data or "age" not in data:
@@ -137,6 +149,7 @@ def add_student():
 # -----------------------------
 @app.route("/api/update/<int:id>", methods=["PUT"])
 def update_student(id):
+    # Parse JSON request body for updated values
     data = request.get_json()
 
     if not data or "name" not in data or "age" not in data:
@@ -172,6 +185,7 @@ def update_student(id):
 # -----------------------------
 @app.route("/api/delete/<int:id>", methods=["DELETE"])
 def delete_student(id):
+    # Delete student by id
     conn = get_db()
     cursor = conn.execute(
         "DELETE FROM students WHERE id=?",

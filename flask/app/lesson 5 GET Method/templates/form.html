@@ -8,12 +8,15 @@
 
 <h2>Student Form</h2>
 
+<!-- method="GET" sends data in URL query parameters -->
 <form action="/submit" method="GET">
 
 Name:
+<!-- This maps to request.args.get("username") -->
 <input type="text" name="username"><br><br>
 
 Age:
+<!-- This maps to request.args.get("age") -->
 <input type="number" name="age"><br><br>
 
 <input type="submit" value="Submit">

@@ -8,8 +8,10 @@
 </head>
 <body>
     <div class="container dashboard">
+        <!-- `user` value comes from session and is passed by Flask -->
         <h1>Welcome, {{ user }}!</h1>
         <p>You are logged in.</p>
+        <!-- Logout route clears current session -->
         <a href="{{ url_for('logout') }}">Logout</a>
     </div>
 </body>

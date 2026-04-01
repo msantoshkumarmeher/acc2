@@ -1,15 +1,24 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3, os
 
+# ============================================================
+# Lesson 8 - CRUD Operations with Flask + SQLite
+# File: app.py
+# Purpose: Create, read, update, delete student records
+# ============================================================
+
 app = Flask(__name__)
 
+# Database file location
 DB_PATH = os.path.join(app.root_path, "database.db")
 
+# Open a DB connection and return rows like dictionaries
 def get_db():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
+# Create table if it does not exist
 def init_db():
     os.makedirs(app.root_path, exist_ok=True)
     conn = get_db()
@@ -27,6 +36,7 @@ def init_db():
 
 @app.route("/")
 def index():
+    # Read all students for listing page
     conn = get_db()
     students = conn.execute("SELECT * FROM students").fetchall()
     conn.close()
@@ -36,9 +46,11 @@ def index():
 def add():
 
     if request.method == "POST":
+        # Read form values
         name = request.form["name"]
         age = request.form["age"]
 
+        # Insert new record
         conn = get_db()
         conn.execute(
             "INSERT INTO students (name, age) VALUES (?, ?)",
@@ -57,6 +69,7 @@ def edit(id):
     conn = get_db()
 
     if request.method == "POST":
+        # Read updated values from form
         name = request.form["name"]
         age = request.form["age"]
 
@@ -85,6 +98,7 @@ def edit(id):
 @app.route("/delete/<int:id>")
 def delete(id):
 
+    # Delete selected student by id
     conn = get_db()
 
     conn.execute(
@@ -98,6 +112,7 @@ def delete(id):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
+    # Ensure DB/table exists before app starts
     with app.app_context():
         init_db()
     app.run(debug=True)

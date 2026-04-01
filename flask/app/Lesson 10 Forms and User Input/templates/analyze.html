@@ -221,6 +221,7 @@
             <h1>📝 Analyze Your Text</h1>
             <p>Enter the text you want to analyze and discover its sentiment!</p>
             
+            <!-- Form submits user text to Flask /analyze route -->
             <form method="POST" action="/analyze">
                 <div class="form-group">
                     <label for="user_input">Your Text:</label>
@@ -242,6 +243,7 @@
             <div class="example-texts">
                 <h3>💡 Try these examples:</h3>
                 <div class="example-buttons">
+                    <!-- These buttons fill the textarea with sample text -->
                     <button class="example-btn" onclick="setExample('I absolutely love this amazing product! It makes me so happy!')">
                         Positive Example
                     </button>
@@ -266,6 +268,7 @@
         const textarea = document.getElementById('user_input');
         const charCount = document.getElementById('charCount');
         
+        // Update character count while user types
         textarea.addEventListener('input', function() {
             charCount.textContent = this.value.length;
         });

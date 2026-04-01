@@ -11,6 +11,7 @@
         <h1>Weather Checker</h1>
         <p class="subtitle">Get current weather by city name</p>
 
+        <!-- Form sends city and units to Flask route -->
         <form method="POST" class="weather-form">
             <label for="city">City</label>
             <input id="city" name="city" type="text" placeholder="e.g. Delhi" value="{{ city }}" required>
@@ -26,10 +27,12 @@
         </form>
 
         {% if error %}
+            <!-- Show user-friendly error message -->
             <div class="alert">{{ error }}</div>
         {% endif %}
 
         {% if weather %}
+            <!-- Show weather data returned by Flask -->
             <section class="card">
                 <h2>{{ weather.city }} ({{ weather.timezone }})</h2>
                 <p><strong>Condition:</strong> {{ weather.description }}</p>
