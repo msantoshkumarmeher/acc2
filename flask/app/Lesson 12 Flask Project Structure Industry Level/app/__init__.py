@@ -13,8 +13,12 @@ def create_app():
     # Create Flask application instance
     app = Flask(__name__)
 
-    # Register routes from blueprint
-    app.register_blueprint(bp)
+    @app.route("/")
+    def index():
+        return "", 302, {"Location": "/api/"}
+
+    # Register routes from blueprint under /api
+    app.register_blueprint(bp, url_prefix="/api")
 
     # Initialize database tables within app context
     with app.app_context():

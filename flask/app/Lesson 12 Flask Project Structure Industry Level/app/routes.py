@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.models import *
 
+
 # Blueprint groups all route handlers in this module
 bp = Blueprint("routes", __name__)
 
