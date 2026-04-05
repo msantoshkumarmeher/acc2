@@ -27,6 +27,7 @@ def get_db():
 # -----------------------------
 # Initialize Database
 # -----------------------------
+
 def init_db():
     # Create students table once when app starts
     conn = get_db()
@@ -64,6 +65,7 @@ def home():
 # -----------------------------
 # GET All Students
 # -----------------------------
+
 @app.route("/api/students", methods=["GET"])
 def get_students():
     # Fetch all students
@@ -90,6 +92,7 @@ def get_students():
 # -----------------------------
 # GET Single Student
 # -----------------------------
+
 @app.route("/api/student/<int:id>", methods=["GET"])
 def get_student(id):
     # Fetch one student by id
@@ -119,6 +122,7 @@ def get_student(id):
 # -----------------------------
 # ADD Student (POST)
 # -----------------------------
+
 @app.route("/api/add", methods=["POST"])
 def add_student():
     # Parse JSON request body
